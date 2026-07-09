@@ -1,0 +1,8 @@
+resend_integration_tests:
+  target: duckdb
+  outputs:
+    duckdb:
+      type: duckdb
+      path: resend_integration_tests.duckdb
+      schema: main
+      threads: 4

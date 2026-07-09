@@ -1,0 +1,17 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.sqlfluff
+logs/
+target/
+dbt_packages/
+integration_tests/logs/
+integration_tests/target/
+integration_tests/dbt_packages/
+integration_tests/package-lock.yml
+integration_tests/.user.yml
+*.duckdb
+*.duckdb.wal

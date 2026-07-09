@@ -1,0 +1,31 @@
+[project]
+name = "dbt-resend"
+version = "0.1.0"
+description = "dbt package for modeling Resend webhook events and API snapshots."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "dbt-core>=1.8,<2.0",
+    "dbt-duckdb>=1.8,<2.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.8",
+    "sqlfluff>=3.2",
+    "sqlfluff-templater-dbt>=3.2",
+    "yamllint>=1.35",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.sqlfluff.core]
+dialect = "duckdb"
+templater = "dbt"
+exclude_rules = ["layout.long_lines"]
+
+[tool.sqlfluff.templater.dbt]
+project_dir = "integration_tests"
+profiles_dir = "integration_tests"
