@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+
+      - name: Install dependencies
+        run: uv sync --locked
+
+      - name: Install dbt package dependencies
+        run: uv run dbt deps --project-dir integration_tests --profiles-dir integration_tests
+
+      - name: Parse
+        run: uv run dbt parse --project-dir integration_tests --profiles-dir integration_tests
+
+      - name: Seed fixtures
+        run: uv run dbt seed --project-dir integration_tests --profiles-dir integration_tests
+
+      - name: Build integration project
+        run: uv run dbt build --project-dir integration_tests --profiles-dir integration_tests
+
+      - name: Generate docs
+        run: uv run dbt docs generate --project-dir integration_tests --profiles-dir integration_tests
+
+      - name: Lint YAML
+        run: uv run yamllint .
+
+      - name: Lint SQL
+        run: uv run sqlfluff lint models integration_tests
