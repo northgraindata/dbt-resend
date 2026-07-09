@@ -71,6 +71,7 @@ By default, webhook models expect the table names used by Resend's webhook inges
 
 ```yaml
 vars:
+  resend_source_database: analytics
   resend_source_schema: raw_resend
   resend_webhook_email_identifier: resend_wh_emails
   resend_webhook_contact_identifier: resend_wh_contacts

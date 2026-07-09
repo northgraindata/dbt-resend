@@ -3,6 +3,7 @@ version: 2
 sources:
   - name: resend_raw
     description: Raw Resend webhook ingester and optional API snapshot tables.
+    database: "{{ var('resend_source_database', target.database) }}"
     schema: "{{ var('resend_source_schema', target.schema) }}"
     tables:
       - name: webhook_email_events
