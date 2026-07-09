@@ -1,0 +1,62 @@
+version: 2
+
+models:
+  - name: fct_resend__email_events
+    description: One row per Resend email webhook event.
+    columns:
+      - name: email_event_key
+        tests:
+          - not_null
+          - unique
+      - name: svix_id
+        tests:
+          - not_null
+          - unique
+      - name: email_id
+        tests:
+          - not_null
+
+  - name: dim_resend__emails
+    description: Current email dimension with lifecycle timestamps and engagement counts.
+    columns:
+      - name: email_key
+        tests:
+          - not_null
+          - unique
+      - name: email_id
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_resend__contacts
+    description: Current contact dimension from webhook events and optional API snapshots.
+    columns:
+      - name: contact_key
+        tests:
+          - not_null
+          - unique
+      - name: contact_id
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_resend__domains
+    description: Current domain dimension from webhook events and optional API snapshots.
+    columns:
+      - name: domain_key
+        tests:
+          - not_null
+          - unique
+      - name: domain_id
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_resend__broadcasts
+    description: Broadcast dimension from optional API snapshots.
+
+  - name: fct_resend__email_engagement_daily
+    description: Daily email event counts by broadcast and template.
+
+  - name: fct_resend__broadcast_performance
+    description: Broadcast-level email event counts from webhook events.

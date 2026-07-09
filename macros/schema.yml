@@ -1,0 +1,13 @@
+version: 2
+
+macros:
+  - name: cast_timestamp
+    description: Adapter-dispatched timestamp cast for raw Resend strings.
+  - name: json_value
+    description: Adapter-dispatched scalar JSON extraction helper.
+  - name: json_query
+    description: Adapter-dispatched JSON object or array extraction helper.
+  - name: surrogate_key
+    description: Stable hash key helper for package models.
+  - name: loaded_at
+    description: Adapter-dispatched current timestamp helper.

@@ -1,0 +1,31 @@
+{{ config(enabled=var('resend__using_webhook_events', true)) }}
+
+select
+    {{ resend.surrogate_key(['svix_id']) }} as email_event_key,
+    svix_id,
+    event_type,
+    event_created_at,
+    webhook_received_at,
+    email_id,
+    message_id,
+    broadcast_id,
+    template_id,
+    from_email,
+    subject,
+    to_recipients,
+    cc_recipients,
+    bcc_recipients,
+    received_for,
+    tags,
+    clicked_link,
+    clicked_ip_address,
+    clicked_user_agent,
+    clicked_at,
+    bounce_type,
+    bounce_subtype,
+    bounce_message,
+    bounce_diagnostic_codes,
+    attachments,
+    raw_event_data,
+    dbt_loaded_at
+from {{ ref('stg_resend__email_events') }}

@@ -1,0 +1,33 @@
+name: resend
+version: 0.1.0
+config-version: 2
+
+require-dbt-version: [">=1.8.0", "<2.0.0"]
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+docs-paths: ["docs"]
+
+target-path: target
+clean-targets:
+  - target
+  - dbt_packages
+  - logs
+
+dispatch:
+  - macro_namespace: resend
+    search_order: ["resend", "dbt"]
+
+models:
+  resend:
+    +materialized: view
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: view
+    marts:
+      +materialized: table

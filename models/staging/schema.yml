@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: stg_resend__email_events
+    description: Cleaned Resend email webhook events with common event fields extracted.
+    columns:
+      - name: svix_id
+        tests:
+          - not_null
+          - unique
+      - name: event_type
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - email.bounced
+                  - email.clicked
+                  - email.complained
+                  - email.delivered
+                  - email.delivery_delayed
+                  - email.failed
+                  - email.opened
+                  - email.received
+                  - email.scheduled
+                  - email.sent
+      - name: email_id
+        tests:
+          - not_null
+
+  - name: stg_resend__contact_events
+    description: Cleaned Resend contact webhook events.
+    columns:
+      - name: svix_id
+        tests:
+          - not_null
+          - unique
+      - name: event_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: ["contact.created", "contact.updated", "contact.deleted"]
+      - name: contact_id
+        tests:
+          - not_null
+
+  - name: stg_resend__domain_events
+    description: Cleaned Resend domain webhook events.
+    columns:
+      - name: svix_id
+        tests:
+          - not_null
+          - unique
+      - name: event_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: ["domain.created", "domain.updated", "domain.deleted"]
+      - name: domain_id
+        tests:
+          - not_null

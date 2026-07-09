@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: int_resend__email_lifecycle
+    description: Email-level lifecycle timestamps derived from webhook events.
+  - name: int_resend__latest_email_event
+    description: Latest webhook event per email.
+  - name: int_resend__latest_contact_event
+    description: Latest webhook event per contact.
+  - name: int_resend__latest_domain_event
+    description: Latest webhook event per domain.
