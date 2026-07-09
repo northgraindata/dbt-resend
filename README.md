@@ -1,6 +1,6 @@
 # Resend DBT Package
 
-This [dbt](https://www.getdbt.com/) package models raw [Resend](https://resend.com/) webhook events and optional API snapshot tables into analytics-ready email, contact, domain, and broadcast models.
+This [dbt](https://www.getdbt.com/) package turns raw [Resend](https://resend.com/) webhook events and optional API snapshot tables into analytics-ready email, contact, domain, and broadcast models.
 
 Features include:
 - Clean staging models for Resend webhook email, contact, and domain events
@@ -123,12 +123,3 @@ To lint:
 uv run yamllint .
 uv run sqlfluff lint models integration_tests
 ```
-
-## Publishing to dbt Hub
-
-1. Update `version` in `dbt_project.yml`.
-2. Update `CHANGELOG.md`.
-3. Create a semver Git tag and GitHub release.
-4. Add the package to the dbt Hub registry following the current dbt guidance.
-
-dbt Hub packages should use bounded minor version install examples so downstream projects receive patch updates without unreviewed minor upgrades.

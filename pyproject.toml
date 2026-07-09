@@ -1,7 +1,7 @@
 [project]
 name = "dbt-resend"
 version = "0.1.0"
-description = "dbt package for modeling Resend webhook events and API snapshots."
+description = "dbt package for Resend email analytics, webhook events, and API snapshots."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
