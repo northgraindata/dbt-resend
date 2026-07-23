@@ -15,7 +15,7 @@ dev = [
     "ruff>=0.8",
     "sqlfluff>=3.2",
     "sqlfluff-templater-dbt>=3.2",
-    "yamllint>=1.35",
+    "yamllint>=1.38.0",
 ]
 
 [tool.ruff]
