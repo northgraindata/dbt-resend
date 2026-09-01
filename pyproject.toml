@@ -5,7 +5,7 @@ description = "dbt package for Resend email analytics, webhook events, and API s
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "dbt-core>=1.8,<2.0",
+    "dbt-core>=1.12.0,<2.0",
     "dbt-duckdb>=1.8,<2.0",
 ]
 
